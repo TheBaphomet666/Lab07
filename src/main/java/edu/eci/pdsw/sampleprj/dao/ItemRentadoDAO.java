@@ -5,21 +5,19 @@
  */
 package edu.eci.pdsw.sampleprj.dao;
 
-import edu.eci.pdsw.samples.entities.Cliente;
+import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.ItemRentado;
+
 import java.util.List;
 
 /**
  *
  * @author hcadavid
  */
-public interface ClienteDAO {
+public interface ItemRentadoDAO {
+
     
-    public void saveIt(ItemRentado it ) throws PersistenceException;
-    
-    public void save(Cliente c) throws PersistenceException;
-    
-    public Cliente load(long id) throws PersistenceException;
-    public List<Cliente> load()throws PersistenceException;
+    public ItemRentado load(int id) throws PersistenceException;
+    public List<ItemRentado> load() throws PersistenceException;
     
 }

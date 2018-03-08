@@ -4,6 +4,99 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper">
+    <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
+    select
+    
+    c.nombre as CLIENTES_nombre,
+    c.documento ,
+    c.telefono  ,
+    c.direccion  ,
+    c.email ,
+    c.vetado ,
+    
+    ir.id as IR_id,
+    ir.fechainiciorenta ,
+    ir.fechafinrenta ,
+    
+    i.id as I_id ,
+    i.nombre as I_nombre ,
+    i.descripcion ,
+    i.fechalanzamiento ,
+    i.tarifaxdia ,
+    i.formatorenta ,
+    i.genero ,        
+    
+    ti.id as TI_id ,
+    ti.descripcion 
 
- 	
+    
+    FROM VI_CLIENTES as c 
+    left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
+    left join VI_ITEMS as i on ir.ITEMS_id=i.id 
+    left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
+   
+    </select>
+    
+    
+    
+    <select parameterType="map" id="consultarCliente" resultMap="ClienteResult">
+    select
+    
+    c.nombre as CLIENTES_nombre,
+    c.documento ,
+    c.telefono  ,
+    c.direccion  ,
+    c.email ,
+    c.vetado ,
+    
+    ir.id as IR_id,
+    ir.fechainiciorenta ,
+    ir.fechafinrenta ,
+    
+    i.id as I_id ,
+    i.nombre as I_nombre ,
+    i.descripcion ,
+    i.fechalanzamiento ,
+    i.tarifaxdia ,
+    i.formatorenta ,
+    i.genero ,        
+    
+    ti.id as TI_id ,
+    ti.descripcion 
+
+    
+    FROM VI_CLIENTES as c 
+    left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
+    left join VI_ITEMS as i on ir.ITEMS_id=i.id 
+    left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+    WHERE c.documento=#{idcli} 
+    </select>
+    
+    
+    
+    <insert parameterType="map" id="agregarItemRentadoACliente">
+        INSERT INTO VI_ITEMRENTADO (id,CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta)
+        VALUES (2125255,#{idcli},#{idit},#{fi},#{ff});
+    </insert>
+        <insert parameterType="map" id="registrarCliente">
+        INSERT INTO VI_CLIENTES 
+        VALUES (#{doc},#{nom},#{telf},#{dir},#{email},#{vetado});
+    </insert>
+    
+    <resultMap type='Cliente' id='ClienteResult'>
+        <id property='documento' column='documento'/>
+        <result property='nombre' column='CLIENTES_nombre'/>
+        <result property='telefono' column='telefono'/>
+        <result property='direccion' column='direccion'/>  
+        <result property='email' column='email'/>    
+        <result property='vetado' column='vetado'/>  
+        <collection property='rentados' ofType='ItemRentado' resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.ItemRentado' ></collection>
+    </resultMap>
+      
+    
+    <resultMap type='TipoItem' id='TipoItem'>
+        <id property='id' column='TI_id'/>
+        <result property='descripcion' column='descripcion'/> 
+    </resultMap>  
+       
 </mapper>
