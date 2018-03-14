@@ -5,7 +5,48 @@
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper">
     
+       <select parameterType="map" id="consultarItemsRentados" resultMap="ItemRentado">
+    select
+ 
+    ir.id as IR_id ,
+    ir.CLIENTES_documento,
+    ir.ITEMS_id,
+    ir.fechainiciorenta,        
+    ir.fechafinrenta,
+    i.id as I_id ,
+    i.nombre as I_nombre ,
+    i.descripcion ,
+    i.fechalanzamiento ,
+    i.tarifaxdia ,
+    i.formatorenta ,
+    i.genero 
+        
+    FROM 
+    VI_ITEMRENTADO as ir
+    LEFT JOIN VI_ITEMS as i  on i.id=ir.ITEMS_id 
+    </select>
     
+    <select parameterType="map" id="consultarItemRentado" resultMap="ItemRentado">
+    select
+ 
+    ir.id as IR_id ,
+    ir.CLIENTES_documento,
+    ir.ITEMS_id,
+    ir.fechainiciorenta,        
+    ir.fechafinrenta,
+    i.id as I_id ,
+    i.nombre as I_nombre ,
+    i.descripcion ,
+    i.fechalanzamiento ,
+    i.tarifaxdia ,
+    i.formatorenta ,
+    i.genero 
+        
+    FROM 
+    VI_ITEMRENTADO as ir
+    LEFT JOIN VI_ITEMS as i  on i.id=ir.ITEMS_id 
+    WHERE ir.id=#{idi} 
+    </select>
     
     
     <resultMap type='ItemRentado' id='ItemRentado'>

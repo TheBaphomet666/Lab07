@@ -17,7 +17,7 @@ public interface ItemRentadoMapper {
     
     public List<ItemRentado> consultarItemsRentados();        
     
-    public ItemRentado consultarItem(@Param("id")int id);
+    public ItemRentado consultarItemRentado(@Param("idi")int id);
 
 
       

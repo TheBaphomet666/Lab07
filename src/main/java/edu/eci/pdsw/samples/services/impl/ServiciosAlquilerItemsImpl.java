@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import edu.eci.pdsw.sampleprj.dao.ClienteDAO;
 import edu.eci.pdsw.sampleprj.dao.ItemDAO;
+import edu.eci.pdsw.sampleprj.dao.ItemRentadoDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 
 import edu.eci.pdsw.samples.entities.Cliente;
@@ -14,6 +15,8 @@ import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 import java.sql.Date;
 import java.util.List;
+import java.sql.Date;
+
 
 /**
  * 
@@ -24,7 +27,8 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     @Inject private ItemDAO daoItem;
 
     @Inject private ClienteDAO daoCliente;
-    private static int VALOR_MULTAXDIA;
+    @Inject private ItemRentadoDAO daoRentado;
+    private static int VALOR_MULTAXDIA=5000;
 
         
     @Override
@@ -87,8 +91,14 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     @Override
     public long consultarMultaAlquiler(int iditem, Date fechaDevolucion) throws ExcepcionServiciosAlquiler {
         try {
-            Item i=daoItem.load(iditem);
-            return 1;
+            ItemRentado i=daoRentado.load(iditem);
+            Date fin= i.getFechafinrenta();
+            long dias =0;
+            if(fechaDevolucion.after(fin)){
+                dias=((fechaDevolucion.getTime()-fin.getTime())/86400000);
+            }
+            //System.out.println("DIAS:"+dias);
+            return dias*VALOR_MULTAXDIA;
         } catch (PersistenceException ex) {
             throw new ExcepcionServiciosAlquiler("Error al consultar Los items Disponibles ",ex);
         }   

@@ -7,6 +7,9 @@ package edu.eci.pdsw.samples.services.client;
 
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
+import java.sql.Date;
+import java.time.LocalDate;
+import static java.time.LocalDate.now;
 
 /**
  *
@@ -15,16 +18,18 @@ import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
 public class Main {
 
     public static void main(String a[]) throws ExcepcionServiciosAlquiler{
-        System.out.println("Consultar cliente\n");
+        System.out.println("\nConsultar cliente\n");
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarCliente(2106340));
-        System.out.println("Consultar Item\n");
+        System.out.println("\nConsultar Item\n");
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarItem(11));
-        System.out.println("Consultar Items Cliente\n");
+        System.out.println("\nConsultar Items Cliente\n");
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarItemsCliente(21048352));
-        System.out.println("Consultar Clientes\n");
+        System.out.println("\nConsultar Clientes\n");
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarClientes());
-        System.out.println("Consultar Items Disponibles\n");
+        System.out.println("\nConsultar Items Disponibles\n");
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarItemsDisponibles());
+        System.out.println("\nConsultarMultaAlquiler\n");
+        System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarMultaAlquiler(1,Date.valueOf(now())));
         System.exit(0);
     }
     

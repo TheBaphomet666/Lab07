@@ -35,23 +35,23 @@ public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
     @Override
     public ItemRentado load(int id) throws PersistenceException {
         try{
-            return null;
+            return itemRentadoMapper.consultarItemRentado(id);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            //throw new PersistenceException("Error al consultar el item "+id,e);
+            throw new PersistenceException("Error al consultar el itemRentado "+id,e);
         }
-        return null;
+        
         
     }
     @Override
     public List<ItemRentado> load() throws PersistenceException {
         try{
-            return null;
+            return itemRentadoMapper.consultarItemsRentados();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            //throw new PersistenceException("Error al consultar el item "+id,e);
+            throw new PersistenceException("Error al consultar los items rentados",e);
         }
-        return null;
+        
     } 
         
     
