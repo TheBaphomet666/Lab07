@@ -40,7 +40,7 @@ public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             //throw new PersistenceException("Error al consultar el item "+id,e);
         }
-        
+        return null;
         
     }
     @Override
@@ -51,6 +51,7 @@ public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             //throw new PersistenceException("Error al consultar el item "+id,e);
         }
+        return null;
     } 
         
     
