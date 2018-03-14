@@ -7,5 +7,16 @@
 
     
 
-                
+    
+    
+    
+    
+    
+    
+    
+    
+    <resultMap type='TipoItem' id='TipoItem'>
+        <id property='id' column='TI_id'/>
+        <result property='descripcion' column='TI_descripcion'/> 
+    </resultMap>        
 </mapper>

@@ -55,14 +55,14 @@
     
     i.id as I_id ,
     i.nombre as I_nombre ,
-    i.descripcion ,
+    i.descripcion as I_descripcion ,
     i.fechalanzamiento ,
     i.tarifaxdia ,
     i.formatorenta ,
     i.genero ,        
     
     ti.id as TI_id ,
-    ti.descripcion 
+    ti.descripcion as TI_descripcion 
 
     
     FROM VI_CLIENTES as c 
@@ -93,10 +93,5 @@
         <collection property='rentados' ofType='ItemRentado' resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.ItemRentado' ></collection>
     </resultMap>
       
-    
-    <resultMap type='TipoItem' id='TipoItem'>
-        <id property='id' column='TI_id'/>
-        <result property='descripcion' column='descripcion'/> 
-    </resultMap>  
        
 </mapper>
