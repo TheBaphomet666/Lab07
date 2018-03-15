@@ -76,12 +76,16 @@
     
     <insert parameterType="map" id="agregarItemRentadoACliente">
         INSERT INTO VI_ITEMRENTADO (id,CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta)
-        VALUES (2125255,#{idcli},#{idit},#{fi},#{ff});
+        VALUES (#{idicli}+#{idit},#{idcli},#{idit},#{fi},#{ff});
     </insert>
         <insert parameterType="map" id="registrarCliente">
         INSERT INTO VI_CLIENTES 
         VALUES (#{doc},#{nom},#{telf},#{dir},#{email},#{vetado});
     </insert>
+    
+    <update id = "Vetar" parameterType = "map">
+        UPDATE VI_CLIENTES SET vetado=#{est} WHERE documento=#{id};
+    </update>
     
     <resultMap type='Cliente' id='ClienteResult'>
         <id property='documento' column='documento'/>

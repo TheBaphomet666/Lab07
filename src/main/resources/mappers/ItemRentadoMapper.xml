@@ -47,7 +47,12 @@
     LEFT JOIN VI_ITEMS as i  on i.id=ir.ITEMS_id 
     WHERE ir.id=#{idi} 
     </select>
-    
+
+
+    <insert parameterType="map" id="registrarAlquilerCliente">
+        INSERT INTO VI_ITEMRENTADO
+        VALUES (#{idc}+#{idi},#{idc},#{idi},#{ini},#{fin});
+    </insert>
     
     <resultMap type='ItemRentado' id='ItemRentado'>
         <id property='id' column='IR_id'/>

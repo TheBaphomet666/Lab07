@@ -16,6 +16,7 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper;
 import edu.eci.pdsw.samples.entities.ItemRentado;
 import edu.eci.pdsw.samples.entities.TipoItem;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -53,6 +54,15 @@ public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
         }
         
     } 
+
+    @Override
+    public void registrarAlquilerCliente(Date date, long docu, Item item, int numdias)throws PersistenceException {
+        int idi= item.getId();
+        Date fin= new Date(date.getTime()+numdias*86400000);
+        itemRentadoMapper.registrarAlquilerCliente(date, docu, idi, fin);
+    }
+
+
         
     
 

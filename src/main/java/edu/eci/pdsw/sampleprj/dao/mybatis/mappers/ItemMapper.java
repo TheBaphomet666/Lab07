@@ -28,5 +28,7 @@ public interface ItemMapper {
                     @Param ("tipit") int tipoitm) throws SQLException;
     public List<Item> consultarItemsDisponibles();
 
+    public void actualizarTarifaItem(@Param ("id")int id,@Param ("tarifa") long tarifa);
+
       
 }

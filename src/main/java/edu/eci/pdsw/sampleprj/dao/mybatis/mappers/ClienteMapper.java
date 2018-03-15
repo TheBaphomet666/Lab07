@@ -39,6 +39,8 @@ public interface ClienteMapper {
                                  @Param("dir") String direccion,
                                  @Param("email")String email,
                                  @Param("vetado") int vetado);
+
+    public void Vetar(@Param("id")long docu,@Param("est") boolean estado);
     
     
     

@@ -77,7 +77,7 @@ public interface ServiciosAlquiler {
      * @throws ExcepcionServiciosAlquiler si el item no existe o no se encuentra
      * alquilado
      */
-    public abstract void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler;
+    //public abstract void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler;
 
     /**
      * @obj consultar el costo del alquiler de un item

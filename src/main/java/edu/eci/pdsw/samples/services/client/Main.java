@@ -5,6 +5,8 @@
  */
 package edu.eci.pdsw.samples.services.client;
 
+import edu.eci.pdsw.samples.entities.Item;
+import edu.eci.pdsw.samples.entities.TipoItem;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
 import java.sql.Date;
@@ -30,6 +32,17 @@ public class Main {
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarItemsDisponibles());
         System.out.println("\nConsultarMultaAlquiler\n");
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarMultaAlquiler(1,Date.valueOf(now())));
+        System.out.println("\nConsultarTipoItem\n");
+        System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarTipoItem(1));
+        System.out.println("\nConsultarTiposItems\n");
+        System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarTiposItem());
+        System.out.println("\nRegistarAlquilerCliente\n");
+        System.out.println("\nantes\n");
+        System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarCliente(1026588472));
+        ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().registrarAlquilerCliente(Date.valueOf(now()), 1026588472,ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarItem(124124), 15);
+        System.out.println("\ndespues\n");
+        System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarCliente(1026588472));
+        
         System.exit(0);
     }
     

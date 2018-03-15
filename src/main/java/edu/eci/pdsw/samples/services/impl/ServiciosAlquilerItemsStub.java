@@ -209,7 +209,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
     }
     
     
-    @Override
+    
     public void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler{
         if (!itemsrentados.containsKey(iditem)) {
             throw new ExcepcionServiciosAlquiler("El item " + iditem + "no esta en alquiler");

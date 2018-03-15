@@ -7,46 +7,56 @@
     <select parameterType="map" id="consultarItems" resultMap="Item">
     select
  
-    id as I_id ,
-    nombre as I_nombre ,
-    descripcion I_descripcion ,
+    i.id as I_id ,
+    i.nombre as I_nombre ,
+    i.descripcion I_descripcion ,
     fechalanzamiento ,
     tarifaxdia ,
     formatorenta ,
-    genero         
+    genero,       
         
+    ti.id as TI_id ,
+    ti.descripcion as TI_descripcion
     FROM 
-    VI_ITEMS   
+    VI_ITEMS as i
+        left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id    
     </select>
        <select parameterType="map" id="consultarItem" resultMap="Item">
     select
  
-    id as I_id ,
-    nombre as I_nombre ,
-    descripcion I_descripcion,
+    i.id as I_id ,
+    i.nombre as I_nombre ,
+    i.descripcion I_descripcion,
     fechalanzamiento ,
     tarifaxdia ,
     formatorenta ,
-    genero         
+    genero , 
+           
+    ti.id as TI_id ,
+    ti.descripcion as TI_descripcion       
         
     FROM 
-    VI_ITEMS
-    WHERE id=#{id}  
+    VI_ITEMS as i
+    left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
+    WHERE i.id=#{id}  
     </select>
   <select parameterType="map" id="consultarItemsDisponibles" resultMap="Item">  
         select
 
         i.id as I_id ,
         i.nombre as I_nombre ,
-        descripcion as I_descripcion ,
+        i.descripcion as I_descripcion ,
         fechalanzamiento ,
         tarifaxdia ,
         formatorenta ,
-        genero         
+        genero,
+      
+        ti.id as TI_id ,
+        ti.descripcion as TI_descripcion          
 
         FROM 
-        VI_ITEMS i LEFT JOIN VI_ITEMRENTADO v
-    ON     i.id=v.ITEMS_id
+        VI_ITEMS i LEFT JOIN VI_ITEMRENTADO v ON     i.id=v.ITEMS_id
+      left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
     WHERE v.ITEMS_id IS NULL;
   </select>
     
@@ -58,6 +68,9 @@
         VALUES (#{id},#{name},#{desc},#{flanz},#{txd},#{frent},#{genero},#{tipit});
     </insert>
     
+    <update id = "actualizarTarifaItem" parameterType = "map">
+        UPDATE VI_ITEMS SET tarifaxdia=#{tarifa} WHERE id=#{id};
+    </update>
     
 
     <resultMap type='Item' id='Item'>

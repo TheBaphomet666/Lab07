@@ -5,9 +5,20 @@
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoItemMapper">
 
-    
+    <select parameterType="map" id="getTiposItems" resultMap="TipoItem">
+        select
+        ti.id as TI_id ,
+        ti.descripcion as TI_descripcion
+        from VI_TIPOITEM as ti
+    </select>
 
-    
+    <select parameterType="map" id="getTipoItem" resultMap="TipoItem">
+        select
+        ti.id as TI_id ,
+        ti.descripcion as TI_descripcion
+        from VI_TIPOITEM as ti
+        where ti.id=#{id}
+    </select>
     
     
     

@@ -53,7 +53,7 @@ public class MyBATISClienteDAO implements ClienteDAO{
                 saveIt(c.getRentados().get(i));
             }
         }
-        catch(Exception e){
+        catch(PersistenceException e){
             throw new PersistenceException("Error al registrar el cliente "+c.toString(),e);
         }
         
@@ -78,10 +78,20 @@ public class MyBATISClienteDAO implements ClienteDAO{
             return clienteMapper.consultarClientes();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al consultar los clientes");
+            throw new PersistenceException("Error al consultar los clientes",e);
         }
         
         
+    }
+
+    @Override
+    public void Vetar(long docu, boolean estado) throws PersistenceException {
+        try{
+            clienteMapper.Vetar(docu,estado);
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Error al Vetar al cliente:"+docu,e);
+        }
     }
     
     

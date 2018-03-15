@@ -10,6 +10,7 @@ import com.google.inject.Singleton;
 import edu.eci.pdsw.sampleprj.dao.ItemDAO;
 import edu.eci.pdsw.sampleprj.dao.ItemRentadoDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
+import edu.eci.pdsw.sampleprj.dao.TipoItemDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
@@ -26,7 +27,7 @@ import java.util.List;
  *
  * @author hcadavid
  */
-public class MyBATISTipoItemDAO implements ItemRentadoDAO{
+public class MyBATISTipoItemDAO implements TipoItemDAO{
 
     @Inject
     private TipoItemMapper TipoItemMapper;    
@@ -34,23 +35,23 @@ public class MyBATISTipoItemDAO implements ItemRentadoDAO{
 
 
     @Override
-    public ItemRentado load(int id) throws PersistenceException {
+    public TipoItem load(int id) throws PersistenceException {
         try{
-            return null;
+            return TipoItemMapper.getTipoItem(id);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al consultar el itemRentado "+id,e);
+            throw new PersistenceException("Error al consultar el TipoItem "+id,e);
         }
         
         
     }
     @Override
-    public List<ItemRentado> load() throws PersistenceException {
+    public List<TipoItem> load() throws PersistenceException {
         try{
-            return null;
+            return TipoItemMapper.getTiposItems();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al consultar los items rentados",e);
+            throw new PersistenceException("Error al consultar los Tipos de Items",e);
         }
         
     } 
