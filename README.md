@@ -38,3 +38,4 @@
 
 3. Implemente las operaciones de la lógica que hagan falta para satisfacer los requerido por la capa de presentación, teniendo en cuenta, lo cual eventualmente requerirá agregar más operaciones a los DAOs -y por ende- más mappers de MyBATIS.
 4. Tenga en cuenta, a las operaciones que impliquen registrar o actualizar registros, demarcar la transaccionalidad con la anotación @Transactional.-->
+# RespaldoLab07
