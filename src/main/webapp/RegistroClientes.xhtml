@@ -1,0 +1,78 @@
+<!DOCTYPE xhtml>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head></h:head>
+    <h:body>
+        <table>
+            <tr>
+                <td>
+
+            <table>
+                
+                <h:form id="formulario_registro">
+                <td>Nombre
+                    <p:inputText id="nombre" value="#{AlquilerItems.nombre}" required="true"/></td>
+                        <tr>
+                            <td>Documento
+                                <p:inputText id="documento" value="#{AlquilerItems.documento}" required="true"/></td>
+                        </tr>
+                         <tr>
+                            <td>Telefono
+                            <p:inputText id="telefono" value="#{AlquilerItems.telefono}" required="true"/></td>
+                          </tr>
+                         <tr>
+                            <td>Direccion
+                                <p:inputText id="direccion" value="#{AlquilerItems.direccion}" required="true"/></td>
+                          </tr>
+                         <tr>
+                            <td>email
+                                <p:inputText id="email" value="#{AlquilerItems.email}" required="true"/></td>
+                          </tr>
+                    <tr>
+                        <td>
+                                 <p:commandButton id="registerclient" type="submit" value="Registrar"  actionListener="#{AlquilerItems.registerAction}" styleClass="ui-priority-primary" process="@form" partialSubmit="true" ajax="true" update=":table,formulario_registro"/>
+                        </td>
+                    </tr>
+                    </h:form>
+
+                    </table>                
+
+                </td>
+                <td>
+                <table>
+                            <tr>
+                                <td>
+                                    <p:dataTable id="table" var="cliente" value="#{AlquilerItems.clientes}">
+                                        <p:column headerText="Nombre">
+                                            <p:commandButton value="#{cliente.nombre}" action="#{AlquilerItems.alquiler(cliente)}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Documento">
+                                            <h:outputText value="#{cliente.documento}" />
+                                        </p:column>
+
+                                        <p:column headerText="Telefono">
+                                            <h:outputText value="#{cliente.telefono}" />
+                                        </p:column>
+
+                                        <p:column headerText="Direccion">
+                                            <h:outputText value="#{cliente.direccion}" />
+                                        </p:column>
+                                        <p:column headerText="Email">
+                                            <h:outputText value="#{cliente.email}" />
+                                        </p:column>
+                                    </p:dataTable>
+                                    <br />
+                                </td> 
+                            </tr>
+                </table>
+                </td>
+ 
+            </tr>
+        </table>
+
+    </h:body>
+</html>

@@ -38,8 +38,10 @@ public class Main {
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarTiposItem());
         System.out.println("\nRegistarAlquilerCliente\n");
         System.out.println("\nantes\n");
+        /**
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarCliente(1026588472));
         ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().registrarAlquilerCliente(Date.valueOf(now()), 1026588472,ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarItem(124124), 15);
+        */
         System.out.println("\ndespues\n");
         System.out.println(ServiciosAlquilerFactory.getInstance().getServiciosAlquiler().consultarCliente(1026588472));
         

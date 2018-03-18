@@ -33,7 +33,7 @@ public class ServiciosAlquilerFactory {
 
     private static Injector testInjector;
 
-    private Injector myBatisInjector(String pathResource) {
+    private Injector myBatisInjector(final String pathResource) {
         return createInjector(new XMLMyBatisModule() {
             @Override
             protected void initialize() {
